@@ -13,8 +13,9 @@ const Pokemon: NextPage = () => {
     const router = useRouter()
     const { pokemon } = router.query
 
-    const [pokemonImage, setPokemonImage] = useState()
-    const [pokemonData, setPokemonData] = useState()
+
+    const [pokemonImage, setPokemonImage] = useState<string>()
+    const [pokemonData, setPokemonData] = useState<any>()
 
     useEffect(() => {
         if (!router.isReady) return;
@@ -38,11 +39,11 @@ const Pokemon: NextPage = () => {
 
                 <div className='p-3'>
                     <div className='text-center text-4xl font-light mb-5'>
-                        {capitalize(pokemon)} <span className='text-gray-400'>N.°{padThreeZeros(pokemonData.id)}</span>
+                        {capitalize(pokemon as string)} <span className='text-gray-400'>N.°{padThreeZeros(pokemonData.id)}</span>
                     </div>
                     <div className='flex'>
                         <div className='bg-gray-100 rounded w-3/6'>
-                            <Image src={pokemonImage} width="410" height="410" alt={'pokemon'} />
+                            <Image src={pokemonImage as string} width="410" height="410" alt={'pokemon'} />
                         </div>
                         <div className='w-3/6 p-5 text-lg font-light'>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab non velit distinctio nobis. Animi labore ut repellendus ipsa eius facilis reprehenderit! Odio aspernatur reiciendis provident eligendi, tempore officia velit voluptatibus.</p>

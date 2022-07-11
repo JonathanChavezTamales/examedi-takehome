@@ -8,15 +8,14 @@ import { GLOBALS } from '../config'
 
 const Home: NextPage = () => {
 
-  const [pokemonListData, setPokemonListData] = useState(null)
+  const [pokemonListData, setPokemonListData] = useState<any>()
 
   const loadNext = () => {
     console.log('loading next')
-    console.log(pokemonListData.next)
-    fetch(pokemonListData.next)
+    fetch(pokemonListData!.next)
       .then((res) => res.json())
       .then((data) => {
-        setPokemonListData((prevState) => {
+        setPokemonListData((prevState: any) => {
           return { next: data.next, results: prevState.results.concat(data.results) }
         })
       })
@@ -33,7 +32,7 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <div className='grid grid-cols-4'>
-        {pokemonListData && pokemonListData.results && pokemonListData.results.map((pokemon) => <Card name={pokemon.name} key={pokemon.name} />)}
+        {pokemonListData && pokemonListData.results && pokemonListData.results.map((pokemon: any) => <Card name={pokemon.name} key={pokemon.name} />)}
       </div>
 
       <div className='flex justify-center m-10'>

@@ -1,12 +1,12 @@
-function capitalize(string) {
+function capitalize(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function padThreeZeros(value) {
+function padThreeZeros(value: string) {
     return ('000' + value).slice(-3);
 }
 
-function typeToColor(type) {
+function typeToColor(type: string) {
     switch (type) {
         case 'poison': return 'violet';
         case 'fire': return 'orange';

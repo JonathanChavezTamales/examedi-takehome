@@ -6,10 +6,10 @@ import { padThreeZeros, capitalize, typeToColor } from '../../utils'
 import { GLOBALS } from '../../config'
 
 
-export default function Card({ name: String }) {
+export default function Card({ name }: { name: string }) {
 
-    const [pokemonImage, setPokemonImage] = useState()
-    const [pokemonData, setPokemonData] = useState()
+    const [pokemonImage, setPokemonImage] = useState<string>()
+    const [pokemonData, setPokemonData] = useState<any>()
 
     useEffect(() => {
         const url = `${GLOBALS.apiUrl}pokemon/${name}`
@@ -45,7 +45,7 @@ export default function Card({ name: String }) {
                                     {capitalize(name)}
                                 </div>
                                 <div className='flex justify-start flex-row text-xs font-light'>
-                                    {pokemonData.types.map((type) =>
+                                    {pokemonData.types.map((type: any) =>
                                         <div key={type.name} className={`px-3 mr-1 bg-green-300 rounded bg-${typeToColor(type.type.name)}-300`} >
                                             {type.type.name}
                                         </div>
